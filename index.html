@@ -177,20 +177,12 @@
         
         .admin-btn {
             background-color: #28a745;
-            margin-right: 10px;
             margin-bottom: 10px;
+            width: 100%;
         }
         
         .admin-btn:hover {
             background-color: #218838;
-        }
-        
-        .clear-btn {
-            background-color: #dc3545;
-        }
-        
-        .clear-btn:hover {
-            background-color: #c82333;
         }
         
         @media (max-width: 600px) {
@@ -249,7 +241,6 @@
     <div class="admin-panel" id="adminPanel">
         <div class="admin-title">Admin Panel</div>
         <button id="downloadBtn" class="btn admin-btn">Download Excel</button>
-        <button id="clearBtn" class="btn clear-btn">Clear Data</button>
     </div>
 
     <script>
@@ -337,9 +328,9 @@
                 }, 5000);
             });
             
-            // Admin panel functionality - show with Ctrl+Shift+A
+            // Admin panel functionality - show with Ctrl+Shift+S
             document.addEventListener('keydown', function(e) {
-                if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                if (e.ctrlKey && e.shiftKey && e.key === 'S') {
                     const adminPanel = document.getElementById('adminPanel');
                     adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
                 }
@@ -367,16 +358,6 @@
                 
                 // Save file
                 XLSX.writeFile(wb, filename);
-            });
-            
-            // Clear data
-            document.getElementById('clearBtn').addEventListener('click', function() {
-                if (confirm('Are you sure you want to clear all waiting list data? This action cannot be undone.')) {
-                    waitingList = [];
-                    localStorage.removeItem('waitingList');
-                    updateCounterDisplay();
-                    alert('All data has been cleared.');
-                }
             });
         });
     </script>
